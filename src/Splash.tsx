@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react';
 import { NavigationStackScreenProps } from 'react-navigation-stack'
 import { View } from "react-native";
 import SplashStore from './stores/SplashStore'
