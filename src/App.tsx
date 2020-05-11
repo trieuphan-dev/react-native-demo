@@ -12,6 +12,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Splash from './Splash'
 import { observer, inject } from "mobx-react"
 import AppStore from './stores/AppStore'
+import Intro from './ui/welcome/Intro'
 
 import {
   SafeAreaView,
@@ -24,7 +25,8 @@ import {
 
 const RootStack = createStackNavigator(
   {
-    splash: Splash
+    splash: Splash,
+    intro: Intro
   },
   {
     initialRouteName: 'splash'
