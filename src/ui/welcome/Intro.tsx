@@ -8,7 +8,7 @@ import IntroStore from '../../stores/intro/IntroStore'
 import ImagesFactory from '../../resources/images/ImagesFactory'
 import AppColor from '../../resources/colors/AppColor'
 // import IntroBottomView from './views/IntroBottomView'
-// import IntroSliderView from './views/IntroSliderView'
+import IntroSliderView from './views/IntroSliderView'
 
 
 
@@ -34,16 +34,45 @@ class Intro extends React.Component<Props> {
     componentDidUpdate() {
     }
 
+    onChange = (index: any) => {
+        this.props.introStore.currentIndex = index.index
+    }
+
     render() {
         return (
             <View style={styles.mainArea} >
                 <ImageBackground source={ImagesFactory.appBackground} style={styles.mainArea}>
                 </ImageBackground>
-                <View style={styles.topArea} >
-          <ImageBackground source={ImagesFactory.appLogoSmall} style={{ width: 100, height: 100, alignSelf: "center" }} >
-          </ImageBackground>
-        
-        </View>
+                <PageControl
+                    style={{ position: 'absolute', left: 0, right: 0, bottom: 20, height: 9 }}
+                    numberOfPages={4}
+                    currentPage={this.props.introStore.currentIndex}
+                    hidesForSinglePage
+                    pageIndicatorTintColor={AppColor.lightGrey}
+                    currentPageIndicatorTintColor={AppColor.lightYellow}
+                />
+
+                <View style={styles.middleArea} >
+                    <Pages indicatorPosition="none" onScrollEnd={(index: any) => this.onChange({ index })}>
+                        <IntroSliderView
+                            pageIndex={0}
+                        />
+                        <IntroSliderView
+                            pageIndex={1}
+                        />
+                        <IntroSliderView
+                            pageIndex={2}
+                        />
+                        <IntroSliderView
+                            pageIndex={3}
+                        />
+                    </Pages>
+                </View>
+
+                 <View style={styles.topArea} >
+                    <ImageBackground source={ImagesFactory.appLogoSmall} style={{ width: 100, height: 100, alignSelf: "center" }} >
+                    </ImageBackground>
+                </View>
             </View>
         )
     }
