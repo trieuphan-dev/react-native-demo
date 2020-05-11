@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { NavigationStackScreenProps } from 'react-navigation-stack'
-import { View } from "react-native";
 import SplashStore from './stores/SplashStore'
+import AppColor from './resources/colors/AppColor'
+import ImagesFactory from './resources/images/ImagesFactory'
 import { observer, inject } from 'mobx-react'
 
 import {
     StyleSheet,
     Text,
-    ImageBackground
+    ImageBackground,
+    Image
 } from 'react-native';
 
 
@@ -36,13 +38,26 @@ export default class Splash extends React.Component<Props> {
 
     render() {
       return (
-        <View style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center"
-          }}>
-          <Text>Hello, world Splash!</Text>
-        </View>
+        <ImageBackground source={ImagesFactory.appBackground} style={styles.mainArea}>
+          <Image source={ImagesFactory.appLogo} style={styles.logo}></Image>
+        </ImageBackground>
       );
     }
   }
+
+  const styles = StyleSheet.create({
+    mainArea: {
+      width: "100%",
+      height: "100%",
+      resizeMode: "cover",
+      flexDirection: 'column',
+      justifyContent: 'center'
+    },
+    indicator: {
+      color: AppColor.lightYellow
+    },
+    logo: {
+      resizeMode: 'center',
+      alignSelf: 'center'
+    }
+  })
