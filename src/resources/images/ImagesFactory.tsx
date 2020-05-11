@@ -1,5 +1,6 @@
 const ImagesFactory = {
     appLogo: require('./res/logo.png'),
+    appLogoSmall: require('./res/small_logo.png'),
     appBackground: require('./res/bg_splash.png'),
     slideImage0: require('./res/splash1.png'),
     slideImage1: require('./res/splash2.png'),

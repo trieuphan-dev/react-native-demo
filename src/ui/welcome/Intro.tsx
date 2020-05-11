@@ -6,7 +6,11 @@ import { Pages } from 'react-native-pages'
 import { NavigationStackScreenProps } from 'react-navigation-stack'
 import IntroStore from '../../stores/intro/IntroStore'
 import ImagesFactory from '../../resources/images/ImagesFactory'
-import AppColor from "../../resources/colors/AppColor"
+import AppColor from '../../resources/colors/AppColor'
+// import IntroBottomView from './views/IntroBottomView'
+// import IntroSliderView from './views/IntroSliderView'
+
+
 
 export interface Props extends NavigationStackScreenProps {
     introStore: IntroStore
@@ -22,7 +26,7 @@ class Intro extends React.Component<Props> {
 
     static navigationOptions = {
         header: null
-      }
+    }
 
     async componentDidMount() {
     }
@@ -32,9 +36,15 @@ class Intro extends React.Component<Props> {
 
     render() {
         return (
-            <View  >
-                <Text>Hello Intro</Text>
-            </View >
+            <View style={styles.mainArea} >
+                <ImageBackground source={ImagesFactory.appBackground} style={styles.mainArea}>
+                </ImageBackground>
+                <View style={styles.topArea} >
+          <ImageBackground source={ImagesFactory.appLogoSmall} style={{ width: 100, height: 100, alignSelf: "center" }} >
+          </ImageBackground>
+        
+        </View>
+            </View>
         )
     }
 }
@@ -46,7 +56,7 @@ const styles = StyleSheet.create({
         height: "100%",
         resizeMode: "cover",
         flexDirection: 'column',
-        backgroundColor: "white"
+        justifyContent: 'center'
     },
 
     topArea: {
@@ -69,5 +79,5 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center'
     }
-
 })
+
