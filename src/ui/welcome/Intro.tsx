@@ -10,8 +10,6 @@ import AppColor from '../../resources/colors/AppColor'
 import IntroBottomView from './views/IntroBottomView'
 import IntroSliderView from './views/IntroSliderView'
 
-
-
 export interface Props extends NavigationStackScreenProps {
     introStore: IntroStore
 }
@@ -35,10 +33,12 @@ class Intro extends React.Component<Props> {
     }
 
     navigateSignIn = () => {
+        console.log("sign In");
         this.props.navigation.navigate('signIn')
       }
     
       navigateSignUp = () => {
+        console.log("sign Up");
         this.props.navigation.navigate('signUp')
       }
 

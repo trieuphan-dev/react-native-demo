@@ -19,7 +19,7 @@ class IntroBottomView extends React.Component<Props> {
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: 'clear', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', marginStart: 20, marginEnd: 20}}>
+            <View style={{ flex: 1, backgroundColor: 'clear', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', marginStart: 25, marginEnd: 25}}>
                 <TouchableHighlight
                     style={styles.signInButton}
                     onPress={this.props.signIn}
@@ -43,7 +43,7 @@ export default IntroBottomView
 
 const styles = StyleSheet.create({
     signUpButton: {
-        width: 150,
+        width: 160,
         height: 50,
         borderWidth: 1,
         borderRadius: 25,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     },
 
     signInButton: {
-        width: 150,
+        width: 160,
         height: 50,
         borderWidth: 1,
         borderRadius: 25,

@@ -13,6 +13,8 @@ import Splash from './Splash'
 import { observer, inject } from "mobx-react"
 import AppStore from './stores/AppStore'
 import Intro from './ui/welcome/Intro'
+import SignUp from './ui/auth/signup/SignUp'
+import SignIn from './ui/auth/signin/SignIn'
 
 import {
   SafeAreaView,
@@ -26,7 +28,9 @@ import {
 const RootStack = createStackNavigator(
   {
     splash: Splash,
-    intro: Intro
+    intro: Intro,
+    signIn: SignIn,
+    signUp: SignUp
   },
   {
     initialRouteName: 'splash'
