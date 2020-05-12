@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { observer, inject } from "mobx-react"
-import ImagesFactory from "../../../resources/images/ImagesFactory"
 import IntroSliderStore from '../../../stores/intro/IntroSliderStore'
 
 export interface Props {
@@ -11,7 +10,7 @@ export interface Props {
 
 @inject("introSliderStore")
 @observer
-class IntroSliderView extends React.Component<Props> {
+class IntroDescView extends React.Component<Props> {
     constructor(props: Props) {
         super(props)
     }
@@ -19,14 +18,14 @@ class IntroSliderView extends React.Component<Props> {
 
         return (
             <View style={styles.container}>
-                {/* <Text style={styles.tilteCenter}>{this.props.introSliderStore?.titles[this.props.pageIndex]} </Text> */}
-                <Image source={this.props.introSliderStore?.images[this.props.pageIndex] ?? ImagesFactory.slideImage0} style={styles.imageCenter} />
+                <Text style={styles.tilte}>{this.props.introSliderStore?.titles[this.props.pageIndex]} </Text>
+                <Text style={styles.desc}>{this.props.introSliderStore?.descs[this.props.pageIndex]} </Text>
             </View>
         )
     }
 }
 
-export default IntroSliderView
+export default IntroDescView
 
 const styles = StyleSheet.create({
     container: {
@@ -35,18 +34,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    tilteCenter: {
+    tilte: {
         textAlign: "center",
         fontSize: 13,
         alignSelf: 'center',
         paddingLeft: 32,
         paddingRight: 32,
     },
-    imageCenter: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        resizeMode: 'cover',
+    desc: {
+        textAlign: "center",
+        fontSize: 13,
+        alignSelf: 'center',
+        paddingLeft: 32,
+        paddingRight: 32,
     }
 })
