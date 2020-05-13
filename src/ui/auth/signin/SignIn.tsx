@@ -71,12 +71,13 @@ export default class SignIn extends React.Component<Props> {
     return (
       <View style={styles.mainArea} >
         <Spinner
-          // visible={this.props.signInStore.isLoading}
+          visible={this.props.signInStore.isLoading}
           color={AppColor.lightYellow}
         />
         <SafeAreaView style={{ flex: 1, flexDirection: 'column' }} >
           <View style={styles.titleArea}>
             <TouchableOpacity
+              style={{width: 50, height: '100%'}}
               onPress={() => this.props.navigation.goBack()} >
               <Image style={styles.iconBack}
                 source={ImagesFactory.iconBack} />
@@ -163,8 +164,11 @@ const styles = StyleSheet.create({
   },
 
   titleText: {
+    flex: 1,
     justifyContent: 'center',
     color: AppColor.lightOrange,
+    textAlign: 'center',
+    marginEnd: 50
   },
 
   topArea: {
@@ -197,8 +201,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   iconBack: {
-    height: 20,
-    width: 20,
-    marginStart: 20,
+    resizeMode: 'center',
   }
 })

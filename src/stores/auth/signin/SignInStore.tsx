@@ -2,7 +2,7 @@ import { observable, action, computed, IComputedValue } from 'mobx'
 import { commonUtil } from './../../../help/CommonUtil'
 
 export default class SignInStore {
-    @observable email: string = "cao.trung.thu@gmail.com"
+    @observable email: string = "android019"
     @observable password: string = ""
     @observable isLoading: boolean = false
     @observable valid: IComputedValue<boolean> = observable.box(true)
