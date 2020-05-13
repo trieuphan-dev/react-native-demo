@@ -6,6 +6,7 @@ const ImagesFactory = {
     slideImage1: require('./res/splash2.png'),
     slideImage2: require('./res/splash3.png'),
     slideImage3: require('./res/splash4.png'),
+    iconBack: require('./res/back.png'),
   }
   
   export default ImagesFactory

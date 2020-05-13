@@ -24,6 +24,9 @@ export default class TextField extends React.PureComponent<ITextFieldProps> {
     return (
       <View style={styles.container}>
         <View >
+        {
+          description && <Text style={styles.textDescription}>{description}</Text>
+        }
           <TextInput
             ref={ref => (this.textInputRef = ref)}
             autoCorrect={false}
@@ -37,9 +40,6 @@ export default class TextField extends React.PureComponent<ITextFieldProps> {
             </View>
           )}
         </View>
-        {
-          description && <Text style={styles.textDescription}>{description}</Text>
-        }
       </View>
     )
   }
@@ -58,15 +58,18 @@ const styles = {
   },
   input: {
     width: '100%',
-    height: 34,
-    fontSize: 13,
+    height: 50,
+    fontSize: 14,
     borderRadius: 5,
     paddingHorizontal: 10,
-    backgroundColor: Colors.white
+    backgroundColor: Colors.white,
+    borderWidth: 1,
+    borderColor: '#8f8e94',
   },
   textDescription: {
     marginTop: 10,
-    fontSize: 12,
+    fontSize: 14,
+    marginBottom: 10,
     color: Colors.bluePaleCornflower
   },
   wrapperSuffix: {
