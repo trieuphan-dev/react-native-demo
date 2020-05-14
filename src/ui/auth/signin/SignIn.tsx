@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer, inject } from "mobx-react"
-import { View, StyleSheet, TouchableOpacity, Image, Text, SafeAreaView, TouchableHighlight } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Image, Text, SafeAreaView, TouchableHighlight, Alert } from 'react-native'
 import { NavigationStackScreenProps } from 'react-navigation-stack'
 import ImagesFactory from '../../../resources/images/ImagesFactory'
 import AppColor from '../../../resources/colors/AppColor'
@@ -46,25 +46,25 @@ export default class SignIn extends React.Component<Props> {
   }
 
   signIn = () => {
-    // if (!this.props.signInStore.valid.get()) {
-    //   return
-    // }
-    // this.props.signInStore.login().then(result => {
-    //   if (result) {
-    //     this.props.signInStore.setEmail("")
-    //     this.props.signInStore.setPassword("")
-    //     this.props.navigation.navigate('main')
-    //   } else {
-    //     Alert.alert(
-    //       '',
-    //       'Incorrect email or password. Please try again!',
-    //       [
-    //         { text: 'Ok', onPress: () => { }, style: 'cancel' },
-    //       ],
-    //       { cancelable: false }
-    //     );
-    //   }
-    // })
+    if (!this.props.signInStore.valid.get()) {
+      return
+    }
+    this.props.signInStore.login().then(result => {
+      if (result) {
+        this.props.signInStore.setEmail("")
+        this.props.signInStore.setPassword("")
+        this.props.navigation.navigate('main')
+      } else {
+        Alert.alert(
+          '',
+          'Incorrect email or password. Please try again!',
+          [
+            { text: 'Ok', onPress: () => { }, style: 'cancel' },
+          ],
+          { cancelable: false }
+        );
+      }
+    })
   }
 
   render() {
