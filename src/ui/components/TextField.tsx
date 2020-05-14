@@ -16,7 +16,6 @@ export default class TextField extends React.PureComponent<ITextFieldProps> {
 
   focus = () => {
     this.textInputRef?.focus()
-    this.textInputRef?.forceUpdate()
   }
 
   render () {

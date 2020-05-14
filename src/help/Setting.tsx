@@ -27,17 +27,21 @@ class Setting {
   async saveSingInInfo(userName?: string, email?: string, userId?: string, phoneNumber?: string) {
     try {
       if (userId !== null) {
+        console.log("userName" + userName);
         await AsyncStorage.setItem('userName', userName!)
       }
       
       if (userId !== null) {
+        console.log("email" + email);
         await AsyncStorage.setItem('email', email!)
       }
       
       if (userId !== null) {
+        console.log("userId" + userId);
         await AsyncStorage.setItem('userId', userId!)
       }
       if (phoneNumber !== null) {
+        console.log("phoneNumber" + phoneNumber);
         await AsyncStorage.setItem('phoneNumber', phoneNumber!)
       }
     } catch (e) {
