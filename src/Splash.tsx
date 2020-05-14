@@ -35,7 +35,7 @@ export default class Splash extends React.Component<Props> {
   }
 
   static navigationOptions = {
-    header: null
+    headerShown: false
   }
 
   render() {

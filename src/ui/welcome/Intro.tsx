@@ -23,8 +23,8 @@ class Intro extends React.Component<Props> {
     }
 
     static navigationOptions = {
-        header: null
-    }
+        headerShown: false
+      }
 
     async componentDidMount() {
     }

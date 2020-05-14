@@ -34,7 +34,7 @@ export default class SignIn extends React.Component<Props> {
   }
 
   static navigationOptions = {
-    header: null
+    headerShown: false
   }
 
   forgotPassword = () => {
@@ -72,7 +72,7 @@ export default class SignIn extends React.Component<Props> {
       <View style={styles.mainArea} >
         <Spinner
           visible={this.props.signInStore.isLoading}
-          color={AppColor.lightYellow}
+          color={AppColor.orange}
         />
         <SafeAreaView style={{ flex: 1, flexDirection: 'column' }} >
           <View style={styles.titleArea}>
@@ -89,7 +89,7 @@ export default class SignIn extends React.Component<Props> {
               <TextField
                 ref='email'
                 placeholder='Enter Email, UserName, or Phone Number'
-                description="Email"
+                description="UserName"
                 keyboardType='email-address'
                 autoCapitalize='none'
                 returnKeyType={"next"}
