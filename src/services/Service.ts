@@ -24,25 +24,35 @@ class Service {
     let res = await new Request().api.post<UserAccountResult>('secured/getUserData/v2', { validationType: "EMAIL", credential: "tvuw9TaONrF5K2OLEFJHdw==", credentialType: "password", deviceId: "04a87d4f29381751", principal:"hoachau", appBuildVersion: "2.0.1"})
     let result = res.data
     if (res.ok && result !== null && result !== undefined) {
-      await setting.saveSingInInfo(result!.userData!.username,
-        result!.userData!.email,
-        result!.userData!.userId,
-        result!.userData!.phoneNumber)
-      return true
+      let user = result!.userData
+      if (user != null) {
+        await setting.saveSingInInfo(user.username,
+          user.email,
+          user.userId,
+          user.phoneNumber)
+        return true
+      } else {
+        return false
+      } 
     } else {
       return false
     }
   }
 
   async register(emailPrimary: String, password: String, firstName: String, lastName: String, phone: String, userName: String): Promise<boolean> {
-    let res = await new Request().api.post<UserAccountResult>('secured/registerAccount/v1', { validationType: "EMAIL", credential: "tvuw9TaONrF5K2OLEFJHdw==", credentialType: "password", deviceId: "04a87d4f29381751", email:emailPrimary, phoneNumber:phone, appBuildVersion: "2.0.1", firstName: firstName, surname: lastName, username: userName})
+    let res = await new Request().api.post<UserAccountResult>('secured/registerAccount/v1', { validationType: "EMAIL", credential: "wrKd2FHD3ti+8o8wPSnH+g==", deviceType: "MOBILE_ANDROID", pushToken: "fQfh7QKjyB0:APA91bFzmbCaja4fp0FC6zJUYv1FDl8gGOLmpJx4f4dTb5HG8x0pYNfNP_gDdSH15azwuYbtmBKrK6rJAT_R2Q4MeFMyXhQvAQC5gLPIf66BVvwG-aSVuzxp2BBdctd-yJOBBC2TOkXR", deviceId: "04a87d4f29381751", email:emailPrimary, phoneNumber:phone, appBuildVersion: "2.0.1", firstName: firstName, surname: lastName, username: userName})
     let result = res.data
     if (res.ok && result !== null && result !== undefined) {
-      await setting.saveSingInInfo(result!.userData!.username,
-        result!.userData!.email,
-        result!.userData!.userId,
-        result!.userData!.phoneNumber)
-      return true
+      let user = result!.userData
+      if (user != null) {
+        await setting.saveSingInInfo(user.username,
+          user.email,
+          user.userId,
+          user.phoneNumber)
+        return true
+      } else {
+        return false
+      } 
     } else {
       return false
     }

@@ -25,9 +25,19 @@ export default class Splash extends React.Component<Props> {
   }
 
   async componentDidMount() {
+    // setTimeout(() => {
+    //   this.props.navigation.navigate('intro')
+    // }, 2000)
+
     setTimeout(() => {
-      this.props.navigation.navigate('intro')
-    }, 2000)
+      this.props.splashStore.isVerified().then(result => {
+        if (result) {
+          this.props.navigation.navigate('home')
+        } else {
+          this.props.navigation.navigate('intro')
+        }
+      })
+    }, 1000)
   }
 
   componentDidUpdate() {

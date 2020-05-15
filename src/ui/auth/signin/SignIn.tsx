@@ -51,7 +51,7 @@ export default class SignIn extends React.Component<Props> {
       if (result) {
         this.props.signInStore.setEmail("")
         this.props.signInStore.setPassword("")
-        this.props.navigation.navigate('main')
+        this.props.navigation.navigate('home')
       } else {
         Alert.alert(
           '',

@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx'
-import { setting } from './../help/Setting'
+import { setting } from '../../help/Setting'
 
-export default class SplashStore {
+export default class HomeStore {
   @observable isLoading: boolean = true
   constructor() {
   }

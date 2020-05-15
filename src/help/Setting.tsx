@@ -9,7 +9,7 @@ class Setting {
   constructor() {
   }
 
-  async isVerified(): Promise<boolean> {
+  async isLogged(): Promise<boolean> {
     let isVerified = await this.getUserId()
     return isVerified !== null
   }

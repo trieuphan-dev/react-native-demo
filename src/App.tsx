@@ -15,6 +15,7 @@ import AppStore from './stores/AppStore'
 import Intro from './ui/welcome/Intro'
 import SignUp from './ui/auth/signup/SignUp'
 import SignIn from './ui/auth/signin/SignIn'
+import Home from './ui/home/Home'
 
 import {
   SafeAreaView,
@@ -30,7 +31,8 @@ const RootStack = createStackNavigator(
     splash: Splash,
     intro: Intro,
     signIn: SignIn,
-    signUp: SignUp
+    signUp: SignUp,
+    home: Home
   },
   {
     initialRouteName: 'splash'
