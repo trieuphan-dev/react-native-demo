@@ -46,16 +46,19 @@ export default class Home extends React.Component<Props> {
     render() {
         return (
             <SafeAreaView style={styles.mainArea} >
-                <Image source={ImagesFactory.slideImage0} style={styles.profileImgArea}></Image>
+                <Image source={{uri: this.props.homeStore.profileUrl}} style={styles.profileImgArea}></Image>
                 <ScrollView
                     contentContainerStyle={styles.scrollView}
                     refreshControl={
                         <RefreshControl refreshing={this.props.homeStore.isLoading} onRefresh={this.onRefresh} />
                     }
                 >
-                    <Text>{this.props.homeStore.fullName}</Text>
-                    <Text>{this.props.homeStore.accountNumber}</Text>
-                    <Text>{this.props.homeStore.balance}</Text>
+                    <View style={styles.accountInfoArea}>
+                        <Text style={styles.fullName}>{this.props.homeStore.fullName}</Text>
+                        <Text style={styles.balance}> ₦{this.props.homeStore.balance}</Text>
+                        <Text style={styles.accountNumber}>Account Number: {this.props.homeStore.accountNumber}</Text>
+                    </View>
+
                     <MainActionsView />
                     <View style={styles.profileProgressArea}>
                         <ProgressCircle
@@ -80,13 +83,14 @@ export default class Home extends React.Component<Props> {
                                 <Image source={ImagesFactory.arrowRight} style={styles.arrowRight}></Image>
                             </View>
                         </View>
-                        <Text style={{ fontSize: 14, color: AppColor.grey, marginTop: 5}}>Save your most frequent transactions as shortcuts.</Text>
+                        <Text style={{ fontSize: 14, color: AppColor.grey, marginTop: 5 }}>Save your most frequent transactions as shortcuts.</Text>
                     </View>
-                    <Text style={{ fontSize: 18, color: 'black', marginTop: 20 , marginStart: 15}}>More</Text>
+                    <Text style={{ fontSize: 18, color: 'black', paddingTop: 20, paddingStart: 15, backgroundColor: 'white' }}>More</Text>
                     <MoreActionsView />
 
                     <View style={styles.forYouArea}>
-
+                        <Text style={{ fontSize: 18, color: 'black', marginTop: 20 }}>For You</Text>
+                        <Image source={{uri: this.props.homeStore.advertUrl}} style={styles.itemAds}></Image>
                     </View>
                 </ScrollView>
             </SafeAreaView>
@@ -102,6 +106,29 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: 'white',
     },
+
+    accountInfoArea: {
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+    },
+
+    fullName: {
+        fontSize: 26,
+        color: 'white'
+    },
+
+    balance: {
+        fontSize: 26,
+        color: 'white',
+        fontWeight: 'bold',
+    },
+
+    accountNumber: {
+        fontSize: 15,
+        color: 'white',
+        fontWeight: 'bold'
+    },
+
     profileImgArea: {
         position: 'absolute',
         width: "100%",
@@ -117,6 +144,7 @@ const styles = StyleSheet.create({
     scrollView: {
         width: '100%',
         marginTop: 80,
+        paddingBottom: 30
     },
 
     profileImg: {
@@ -147,7 +175,7 @@ const styles = StyleSheet.create({
     progress: {
         width: 35,
         height: 35,
-        backgroundColor: 'red'
+        backgroundColor: 'red',
     },
 
     arrowDownImg: {
@@ -170,7 +198,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         paddingEnd: 15,
         paddingStart: 15,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
 
     shorcutsHeader: {
@@ -194,12 +222,13 @@ const styles = StyleSheet.create({
         resizeMode: 'center'
     },
 
-    moreActionsArea: {
-        height: 100,
-        width: '100%',
+    forYouArea: {
+        marginBottom: 50,
+        paddingStart: 15,
+        paddingEnd: 15,
         shadowColor: "black",
         backgroundColor: "white",
-        borderRadius: 10,
+        borderRadius: 1,
         marginTop: 10,
         shadowOffset: {
             width: 0,
@@ -207,53 +236,16 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.36,
         shadowRadius: 6.68,
-
-        elevation: 11,
     },
 
-    forYouArea: {
-        backgroundColor: 'orange',
-        height: 300,
-        width: '100%'
+    itemAds: {
+        width: '100%',
+        height: 220,
+        resizeMode: "stretch",
+        marginBottom: 20,
+        marginTop: 5
     },
 
-    titleText: {
-        flex: 1,
-        justifyContent: 'center',
-        color: AppColor.lightOrange,
-        textAlign: 'center',
-        marginEnd: 50
-    },
-
-    topArea: {
-        width: "100%",
-        height: 100,
-        marginTop: 0,
-        flexDirection: 'column'
-    },
-    loginArea: {
-        marginLeft: 16,
-        marginRight: 16,
-        flexDirection: 'column',
-
-    },
-    loginButton: {
-        width: "100%",
-        height: 50,
-        borderWidth: 1,
-        borderRadius: 25,
-        borderColor: AppColor.lightOrange,
-        backgroundColor: AppColor.lightOrange,
-        marginTop: 0,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    bottomArea: {
-        flex: 1,
-        marginLeft: 16,
-        marginRight: 16,
-        flexDirection: 'column'
-    },
     iconBack: {
         resizeMode: 'center',
     }
