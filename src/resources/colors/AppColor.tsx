@@ -6,7 +6,8 @@ const AppColor = {
     orange: '#f26522',
     lightOrange: '#f7931e',
     white: '#FFFFFF',
-    disable: '#fab876'
+    disable: '#fab876',
+    purpleBrown: '#231F20'
   }
-  
+
   export default AppColor

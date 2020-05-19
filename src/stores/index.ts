@@ -7,6 +7,8 @@ import SignInStore from './auth/signin/SignInStore'
 import SignUpStore from './auth/signup/SignUpStore'
 import ForgotPasswordStore from './auth/forgotpassword/ForgotPasswordStore'
 import HomeStore from './home/HomeStore'
+import MainActions from './home/ActionsStores'
+import MoreActionsStore from './home/MoreActionsStore'
 
 export default {
     appStore: new AppStore(),
@@ -18,4 +20,6 @@ export default {
     signUpStore: new SignUpStore(),
     forgotPasswordStore: new ForgotPasswordStore(),
     homeStore: new HomeStore(),
+    mainActions: new MainActions(),
+    moreActionsStore: new MoreActionsStore(),
 }
