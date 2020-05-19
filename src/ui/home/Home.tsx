@@ -80,9 +80,9 @@ export default class Home extends React.Component<Props> {
                                 <Image source={ImagesFactory.arrowRight} style={styles.arrowRight}></Image>
                             </View>
                         </View>
-                        <Text style={{ fontSize: 14, color: AppColor.grey, marginTop: 5 }}>Save your most frequent transactions as shortcuts.</Text>
+                        <Text style={{ fontSize: 14, color: AppColor.grey, marginTop: 5}}>Save your most frequent transactions as shortcuts.</Text>
                     </View>
-                    <Text style={{ fontSize: 18, color: 'black', marginTop: 20 }}>More</Text>
+                    <Text style={{ fontSize: 18, color: 'black', marginTop: 20 , marginStart: 15}}>More</Text>
                     <MoreActionsView />
 
                     <View style={styles.forYouArea}>
@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
     mainArea: {
         width: "100%",
         height: "100%",
-        position: 'absolute',
         resizeMode: "cover",
         flexDirection: 'column',
         backgroundColor: 'white',
@@ -117,7 +116,6 @@ const styles = StyleSheet.create({
 
     scrollView: {
         width: '100%',
-        backgroundColor: 'red',
         marginTop: 80,
     },
 
@@ -128,13 +126,10 @@ const styles = StyleSheet.create({
     profileProgressArea: {
         flexDirection: "row",
         alignItems: 'center',
-        display: "flex",
         backgroundColor: 'white',
         height: 70,
-        width: '100%',
         marginEnd: 15,
         marginLeft: 15,
-        marginRight: 15,
         shadowColor: "black",
         borderRadius: 10,
         marginTop: 20,
@@ -173,11 +168,12 @@ const styles = StyleSheet.create({
     shorcutsArea: {
         width: '100%',
         marginTop: 20,
+        paddingEnd: 15,
+        paddingStart: 15,
         backgroundColor: 'white'
     },
 
     shorcutsHeader: {
-        width: '100%',
         flexDirection: 'row',
     },
 
