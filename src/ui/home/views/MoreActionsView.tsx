@@ -1,11 +1,15 @@
 import * as React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native'
 import { observer, inject } from "mobx-react"
 import MoreActionsStore from '../../../stores/home/MoreActionsStore'
 import AppColor from '../../../resources/colors/AppColor'
 
 export interface Props {
     moreActionsStore?: MoreActionsStore
+    payAirtime: () => any
+    payData: () => any
+    payBill: () => any
+    activity: () => any
 }
 
 @inject("moreActionsStore")
@@ -14,17 +18,41 @@ class MoreActionsView extends React.Component<Props> {
     constructor(props: Props) {
         super(props)
     }
+    payAirtimeTouched = (index: string) => {
+        console.log("sign In" + index);
+
+    }
     render() {
-        var actions = [];
-        for (var i = 0; i < 4; i++) {
-            actions.push(<View key={i} style={styles.itemAction}>
-                <Image source={this.props.moreActionsStore?.images[i]} style={styles.imgAction}></Image>
-                <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[i]}</Text>
-            </View>)
-        }
         return (
             <View style={styles.mainActionsArea}>
-                {actions}
+                <TouchableHighlight onPress={this.props.payAirtime} >
+                    <View key={0} style={styles.itemAction}>
+                        <Image source={this.props.moreActionsStore?.images[0]} style={styles.imgAction}></Image>
+                        <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[0]}</Text>
+                    </View>
+                </TouchableHighlight>
+                
+                <TouchableHighlight onPress={this.props.payData}>
+                    <View key={1} style={styles.itemAction}>
+                        <Image source={this.props.moreActionsStore?.images[1]} style={styles.imgAction}></Image>
+                        <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[1]}</Text>
+                    </View>
+                </TouchableHighlight>
+
+                <TouchableHighlight onPress={this.props.payBill}>
+                    <View key={2} style={styles.itemAction}>
+                        <Image source={this.props.moreActionsStore?.images[2]} style={styles.imgAction}></Image>
+                        <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[2]}</Text>
+                    </View>
+                </TouchableHighlight>
+
+                <TouchableHighlight onPress={this.props.activity}>
+                    <View key={3} style={styles.itemAction}>
+                        <Image source={this.props.moreActionsStore?.images[3]} style={styles.imgAction}></Image>
+                        <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[3]}</Text>
+                    </View>
+                </TouchableHighlight>
+
             </View>
         )
     }
@@ -38,8 +66,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         height: 100,
-        marginStart:15,
-        marginEnd:15,
+        marginStart: 15,
+        marginEnd: 15,
         shadowColor: "black",
         backgroundColor: "white",
         borderRadius: 10,
