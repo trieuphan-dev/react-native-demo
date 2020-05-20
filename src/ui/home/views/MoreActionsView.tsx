@@ -43,7 +43,7 @@ class MoreActionsView extends React.Component<Props> {
                     </View>
                 </TouchableHighlight>
 
-                <TouchableHighlight onPress={this.props.payAirtime} underlayColor="transparent">
+                <TouchableHighlight onPress={this.props.activity} underlayColor="transparent">
                     <View style={styles.itemAction}>
                         <Image source={this.props.moreActionsStore?.images[3]} style={styles.imgAction}></Image>
                         <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[3]}</Text>

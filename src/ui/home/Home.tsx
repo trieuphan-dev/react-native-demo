@@ -35,7 +35,7 @@ export default class Home extends React.Component<Props> {
 
     navigateToActivity = () => {
         console.log("activity");
-        this.props.navigation.navigate('activity')
+        this.props.navigation.navigate('transactionHistory')
     }
 
     navigateToBuyAirtime = () => {

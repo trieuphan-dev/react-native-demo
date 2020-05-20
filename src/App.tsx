@@ -16,15 +16,7 @@ import Intro from './ui/welcome/Intro'
 import SignUp from './ui/auth/signup/SignUp'
 import SignIn from './ui/auth/signin/SignIn'
 import Home from './ui/home/Home'
-
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import TransactionHistory from './ui/history/TransactionHistory'
 
 const RootStack = createStackNavigator(
   {
@@ -32,7 +24,8 @@ const RootStack = createStackNavigator(
     intro: Intro,
     signIn: SignIn,
     signUp: SignUp,
-    home: Home
+    home: Home,
+    transactionHistory: TransactionHistory,
   },
   {
     initialRouteName: 'splash'
