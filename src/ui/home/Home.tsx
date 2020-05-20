@@ -33,6 +33,26 @@ export default class Home extends React.Component<Props> {
         headerShown: false
     }
 
+    navigateToActivity = () => {
+        console.log("activity");
+        this.props.navigation.navigate('activity')
+    }
+
+    navigateToBuyAirtime = () => {
+        console.log("buyAirtime");
+        this.props.navigation.navigate('buyAirtime')
+    }
+
+    navigateToBuyData = () => {
+        console.log("buyData");
+        this.props.navigation.navigate('buyData')
+    }
+
+    navigateToPayBill = () => {
+        console.log("payBill");
+        this.props.navigation.navigate('payBill')
+    }
+
     onRefresh = () => {
         this.props.homeStore.isLoading = true
         this.onGetUserData()
@@ -97,7 +117,7 @@ export default class Home extends React.Component<Props> {
                         <Text style={{ fontSize: 14, color: AppColor.grey, marginTop: 5 }}>Save your most frequent transactions as shortcuts.</Text>
                     </View>
                     <Text style={{ fontSize: 18, color: 'black', paddingTop: 20, paddingStart: 15, backgroundColor: 'white' }}>More</Text>
-                    <MoreActionsView />
+                    <MoreActionsView payAirtime={this.navigateToBuyAirtime} payData={this.navigateToBuyData} payBill={this.navigateToPayBill} activity={this.navigateToActivity} />
 
                     <View style={styles.forYouArea}>
                         <Text style={{ fontSize: 18, color: 'black', marginTop: 20 }}>For You</Text>

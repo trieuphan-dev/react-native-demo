@@ -18,36 +18,33 @@ class MoreActionsView extends React.Component<Props> {
     constructor(props: Props) {
         super(props)
     }
-    payAirtimeTouched = (index: string) => {
-        console.log("sign In" + index);
 
-    }
     render() {
         return (
             <View style={styles.mainActionsArea}>
-                <TouchableHighlight onPress={this.props.payAirtime} >
-                    <View key={0} style={styles.itemAction}>
+                <TouchableHighlight onPress={this.props.payAirtime} underlayColor="transparent">
+                    <View style={styles.itemAction}>
                         <Image source={this.props.moreActionsStore?.images[0]} style={styles.imgAction}></Image>
                         <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[0]}</Text>
                     </View>
                 </TouchableHighlight>
-                
-                <TouchableHighlight onPress={this.props.payData}>
-                    <View key={1} style={styles.itemAction}>
+
+                <TouchableHighlight onPress={this.props.payData} underlayColor="transparent">
+                    <View style={styles.itemAction}>
                         <Image source={this.props.moreActionsStore?.images[1]} style={styles.imgAction}></Image>
                         <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[1]}</Text>
                     </View>
                 </TouchableHighlight>
 
-                <TouchableHighlight onPress={this.props.payBill}>
-                    <View key={2} style={styles.itemAction}>
+                <TouchableHighlight onPress={this.props.payBill} underlayColor="transparent">
+                    <View style={styles.itemAction}>
                         <Image source={this.props.moreActionsStore?.images[2]} style={styles.imgAction}></Image>
                         <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[2]}</Text>
                     </View>
                 </TouchableHighlight>
 
-                <TouchableHighlight onPress={this.props.activity}>
-                    <View key={3} style={styles.itemAction}>
+                <TouchableHighlight onPress={this.props.payAirtime} underlayColor="transparent">
+                    <View style={styles.itemAction}>
                         <Image source={this.props.moreActionsStore?.images[3]} style={styles.imgAction}></Image>
                         <Text style={styles.textAction}>{this.props.moreActionsStore?.titles[3]}</Text>
                     </View>
