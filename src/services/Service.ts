@@ -1,6 +1,6 @@
 import { create, ApisauceInstance } from 'apisauce'
 import { setting } from '../help/Setting'
-import { UserAccountResult } from '../model/UserModel'
+import { UserAccountResult, User } from '../model/UserModel'
 
 export enum RequestState {
   none,
@@ -21,9 +21,11 @@ export class Request {
 
 class Service {
   async login(emailPrimary: String, password: String): Promise<boolean> {
-    let res = await new Request().api.post<UserAccountResult>('secured/getUserData/v2', { validationType: "EMAIL", credential: "tvuw9TaONrF5K2OLEFJHdw==", credentialType: "password", deviceId: "04a87d4f29381751", principal:"hoachau", appBuildVersion: "2.0.1"})
+    let res = await new Request().api.post<UserAccountResult>('secured/getUserData/v2', { validationType: "EMAIL", credential: "PUnXPXEj1x286z2dOAPesg==", credentialType: "password", deviceId: "04a87d4f29381751", principal:"hoachau", appBuildVersion: "2.0.1"})
     let result = res.data
     if (res.ok && result !== null && result !== undefined) {
+      console.log("error message" + result.message)
+      console.log("error code" + result.responseCode)
       let user = result!.userData
       if (user != null) {
         await setting.saveSingInInfo(user.username,
@@ -57,6 +59,21 @@ class Service {
       return false
     }
   }
+
+  async getUserData(emailPrimary: String): Promise<User|null> {
+    let res = await new Request().api.post<UserAccountResult>('secured/getUserData/v2', { validationType: "EMAIL", credential: "PUnXPXEj1x286z2dOAPesg==", credentialType: "password", deviceId: "04a87d4f29381751", principal:"hoachau", appBuildVersion: "2.0.1"})
+    let result = res.data
+    if (res.ok && result !== null && result !== undefined) {
+      console.log("error message" + result.message)
+      console.log("error code" + result.responseCode)
+      let user = result!.userData
+      return user
+    } else {
+      return null
+    }
+  }
 }
+
+
 
 export const service = new Service()

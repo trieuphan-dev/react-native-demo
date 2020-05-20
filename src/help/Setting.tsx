@@ -23,6 +23,15 @@ class Setting {
     }
   }
 
+  async getUserName(): Promise<string | null> {
+    try {
+      const userId = await AsyncStorage.getItem('userName')
+      return userId
+    } catch (e) {
+      return null
+    }
+  }
+
 
   async saveSingInInfo(userName?: string, email?: string, userId?: string, phoneNumber?: string) {
     try {

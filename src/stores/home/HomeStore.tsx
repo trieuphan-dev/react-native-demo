@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx'
 import { setting } from '../../help/Setting'
+import { service } from '../../services/Service'
 
 export default class HomeStore {
   @observable isLoading: boolean = false
@@ -16,5 +17,19 @@ export default class HomeStore {
     let isVerified = await setting.isLogged()
     this.isLoading = false
     return isVerified
+  }
+
+  @action async getUserData(): Promise<boolean> {
+    const userName = await setting.getUserName()
+    let user = await service.getUserData(userName!)
+      if (user != null) {
+        this.accountNumber = "2884010366"
+        this.profileUrl = "https://s3.amazonaws.com/crisoforo.com/flowers.jpg"
+        this.userName = user.username
+        this.balance = 12252.25
+        this.fullName = user.firstName + ' ' + user.lastName
+        return true
+      }
+    return false
   }
 }

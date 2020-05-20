@@ -4,10 +4,7 @@ import { View, StyleSheet, ScrollView, RefreshControl, Text, SafeAreaView, Touch
 import { NavigationStackScreenProps } from 'react-navigation-stack'
 import ImagesFactory from '../../resources/images/ImagesFactory'
 import AppColor from '../../resources/colors/AppColor'
-import Spinner from 'react-native-loading-spinner-overlay'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import HomeStore from '../../stores/home/HomeStore';
-import ImagePlaceholder from 'react-native-image-with-placeholder'
 import MainActionsView from './views/MainActionsView'
 import ProgressCircle from 'react-native-progress-circle'
 import MoreActionsView from './views/MoreActionsView'
@@ -25,7 +22,7 @@ export default class Home extends React.Component<Props> {
     }
 
     async componentDidMount() {
-
+        this.onGetUserData()
     }
 
     componentDidUpdate() {
@@ -37,16 +34,30 @@ export default class Home extends React.Component<Props> {
     }
 
     onRefresh = () => {
-        this.props.homeStore.isLoading = true;
-        setTimeout(() => {
-            this.props.homeStore.isLoading = false;
-        }, 1000)
+        this.props.homeStore.isLoading = true
+        this.onGetUserData()
+    }
+
+    onGetUserData = () => {
+        this.props.homeStore.getUserData().then(result => {
+            this.props.homeStore.isLoading = false
+            if (!result) {
+                Alert.alert(
+                    'Error',
+                    'Error when loading user info!',
+                    [
+                        { text: 'Ok', onPress: () => { }, style: 'cancel' },
+                    ],
+                    { cancelable: false }
+                );
+            }
+        })
     }
 
     render() {
         return (
             <SafeAreaView style={styles.mainArea} >
-                <Image source={{uri: this.props.homeStore.profileUrl}} style={styles.profileImgArea}></Image>
+                <Image source={{ uri: this.props.homeStore.profileUrl }} style={styles.profileImgArea}></Image>
                 <ScrollView
                     contentContainerStyle={styles.scrollView}
                     refreshControl={
@@ -90,7 +101,7 @@ export default class Home extends React.Component<Props> {
 
                     <View style={styles.forYouArea}>
                         <Text style={{ fontSize: 18, color: 'black', marginTop: 20 }}>For You</Text>
-                        <Image source={{uri: this.props.homeStore.advertUrl}} style={styles.itemAds}></Image>
+                        <Image source={{ uri: this.props.homeStore.advertUrl }} style={styles.itemAds}></Image>
                     </View>
                 </ScrollView>
             </SafeAreaView>
