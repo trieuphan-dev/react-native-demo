@@ -1,6 +1,6 @@
 import { observable } from 'mobx'
 
-export default class TransactionHistory {
+export default class TransactionHistoryStore {
     constructor() {
     }
 }

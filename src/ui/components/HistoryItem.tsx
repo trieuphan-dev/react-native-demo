@@ -4,15 +4,14 @@ import {
   SafeAreaView, TouchableOpacity
 } from 'react-native'
 import ImagesFactory from '../../resources/images/ImagesFactory'
-import { Video } from '../../model/VideoModel'
+import { TransactionHistory } from '../../model/TransactionHistoryModel'
 import { commonUtil } from '../../help/CommonUtil'
 
-type VideoItemProp = {
-  video: Video,
-  openMenu: (item: Video) => any
+type HisotryItemProp = {
+  history: TransactionHistory
 }
 
-class VideoItem extends React.Component<VideoItemProp> {
+class HistoryItem extends React.Component<HisotryItemProp> {
   constructor(props: any) {
     super(props)
   }
@@ -23,38 +22,16 @@ class VideoItem extends React.Component<VideoItemProp> {
         <SafeAreaView style={{ flex: 1, flexDirection: 'column' }} >
           <View style={styles.container}>
             <View style={styles.leftContainer}>
-              <Image source={{ uri: this.props.video.thumbnailUrl }} style={{ width: '100%', height: '100%' }} />
+              <Image source={{ uri: this.props.history.thirdPartyProfilePicture }} style={{ width: '100%', height: '100%' }} />
             </View>
             <View style={styles.rightContainer}>
               <View>
                 <Text style={{ fontSize: 14, fontWeight: 'bold', marginBottom: 3 }}>
-                  {this.props.video.creator}
+                  {this.props.history.activityDate}
                 </Text>
                 <Text style={{ fontSize: 14, fontWeight: '300', marginBottom: 3 }}>
-                  {this.props.video.title}
+                  {this.props.history.caption}
                 </Text>
-                <View style={{ flexDirection: 'row' }}>
-                  <Text style={{ fontSize: 12, fontWeight: '200' }}>
-                    {commonUtil.videoDate(this.props.video)}
-                  </Text>
-                  {commonUtil.isExpired(this.props.video) && <Image source={ImagesFactory.clockIamge} style={{ marginLeft: 5, width: 13, height: 13 }} />}
-                </View>
-              </View>
-              <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end' }}>
-                <Text style={{ flex: 1, flexDirection: 'row', fontSize: 12, fontWeight: '300' }}>
-                  {commonUtil.videoViewsShares(this.props.video)}
-                </Text>
-                <View style={styles.btnOptions}>
-                  <TouchableOpacity
-                    activeOpacity={0.5}
-                    onPress={() => this.props.openMenu(this.props.video)}
-                  >
-                    <Image
-                      source={ImagesFactory.optionsImage}
-                      style={styles.iconOptions}
-                    />
-                  </TouchableOpacity>
-                </View>
               </View>
             </View>
           </View>
@@ -64,7 +41,7 @@ class VideoItem extends React.Component<VideoItemProp> {
   }
 }
 
-export default VideoItem
+export default HistoryItem
 
 const styles = StyleSheet.create({
   container: {
