@@ -17,6 +17,7 @@ import SignUp from './ui/auth/signup/SignUp'
 import SignIn from './ui/auth/signin/SignIn'
 import Home from './ui/home/Home'
 import TransactionHistory from './ui/history/TransactionHistory'
+import Main from './ui/main/Main'
 
 const RootStack = createStackNavigator(
   {
@@ -26,6 +27,7 @@ const RootStack = createStackNavigator(
     signUp: SignUp,
     home: Home,
     transactionHistory: TransactionHistory,
+    main: Main,
   },
   {
     initialRouteName: 'splash'

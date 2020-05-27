@@ -10,6 +10,7 @@ import HomeStore from './home/HomeStore'
 import MainActions from './home/ActionsStores'
 import MoreActionsStore from './home/MoreActionsStore'
 import TransactionHistoryStore from './history/TransactionHistoryStore'
+import MainStore from './main/MainStore'
 
 export default {
     appStore: new AppStore(),
@@ -24,4 +25,5 @@ export default {
     mainActions: new MainActions(),
     moreActionsStore: new MoreActionsStore(),
     transactionHistory: new TransactionHistoryStore(),
+    mainStore: new MainStore(),
 }
