@@ -11,18 +11,17 @@ class DrawerContent extends Component {
     ],
   };
 
-  navigateToScreen = route => () => {
-    const navigate = NavigationActions.navigate({
-      routeName: route,
-    });
-    this.props.navigation.dispatch(navigate);
-  };
+//   navigateToScreen = route => () => {
+//     const navigate = NavigationActions.navigate({
+//       routeName: route,
+//     });
+//     this.props.navigation.dispatch(navigate);
+//   };
 
   renderChannelButtons() {
     return this.state.channels.map(({ screen, title, icon }) => (
       <TouchableOpacity
         key={screen + title}
-        onPress={this.navigateToScreen(screen)}
       >
         <View style={{ flexDirection: 'row' }}>
           <Icon
