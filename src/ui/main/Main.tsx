@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { observer, inject } from "mobx-react"
-import { View, StyleSheet,Button, ScrollView, RefreshControl, Text, SafeAreaView, TouchableHighlight, Alert, Image } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Button, ScrollView, RefreshControl, Text, SafeAreaView, TouchableHighlight, Alert, Image } from 'react-native'
 import { NavigationStackScreenProps } from 'react-navigation-stack'
 import ImagesFactory from '../../resources/images/ImagesFactory'
 import AppColor from '../../resources/colors/AppColor'
 import MainStore from '../../stores/main/MainStore';
 import ProgressCircle from 'react-native-progress-circle'
 import { NavigationContainer } from '@react-navigation/native';
+import Icon from "react-native-vector-icons/MaterialIcons";
+import Home from './../home/Home'
+import TransactionHistory from './../history/TransactionHistory'
+
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -54,8 +58,8 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Notifications" component={Notifications} />
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="TransactionHistory" component={TransactionHistory} />
     </Drawer.Navigator>
   );
 }
@@ -72,15 +76,15 @@ export interface Props extends NavigationStackScreenProps {
     componentDidUpdate() {
   
     }
-  
-    static navigationOptions = {
-      headerShown: false
-    }
+
+  //   static navigationOptions = {
+  //     headerShown: false
+  // }
 
     render() {
         return (<NavigationContainer>
-          <MyDrawer />
-        </NavigationContainer>)
+      <MyDrawer />
+    </NavigationContainer>)
     }
   }
 

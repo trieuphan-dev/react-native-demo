@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer, inject } from "mobx-react"
-import { View, StyleSheet, ScrollView, RefreshControl, Text, SafeAreaView, TouchableHighlight, Alert, Image } from 'react-native'
+import { View, StyleSheet, ScrollView, TouchableOpacity, RefreshControl, Text, SafeAreaView, TouchableHighlight, Alert, Image } from 'react-native'
 import { NavigationStackScreenProps } from 'react-navigation-stack'
 import ImagesFactory from '../../resources/images/ImagesFactory'
 import AppColor from '../../resources/colors/AppColor'
@@ -8,6 +8,7 @@ import HomeStore from '../../stores/home/HomeStore';
 import MainActionsView from './views/MainActionsView'
 import ProgressCircle from 'react-native-progress-circle'
 import MoreActionsView from './views/MoreActionsView'
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 export interface Props extends NavigationStackScreenProps {
     homeStore: HomeStore
@@ -29,9 +30,19 @@ export default class Home extends React.Component<Props> {
 
     }
 
-    static navigationOptions = {
-        headerShown: false
-    }
+
+    static navigationOptions = ({ navigation }: any) => ({
+        headerShown: true,
+        drawerLabel: "Hooli",
+        title: "Hooli",
+        headerLeft: () => (
+          <View style={{ paddingHorizontal: 10 }}>
+            <TouchableOpacity onPress={() => navigation.openDrawer}>
+              <Icon name="menu" size={30} color="blue" />
+            </TouchableOpacity>
+          </View>
+        )
+      });
 
     navigateToActivity = () => {
         console.log("activity");
